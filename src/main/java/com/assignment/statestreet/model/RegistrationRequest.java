@@ -1,12 +1,11 @@
 package com.assignment.statestreet.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
 public class RegistrationRequest {
     String studentName;
     String courseName;

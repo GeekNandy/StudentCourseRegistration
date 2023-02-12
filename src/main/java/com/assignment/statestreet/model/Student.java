@@ -3,10 +3,12 @@ package com.assignment.statestreet.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity(name = "STUDENT")
 public class Student {
 
@@ -17,7 +19,7 @@ public class Student {
     @NonNull
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     @NonNull
     private String email;
 

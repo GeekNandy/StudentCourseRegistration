@@ -28,13 +28,18 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findAll();
     }
 
-    public Student getStudentViaEmail(final String email) {
+    public Optional<Student> getStudentViaEmail(final String email) {
         return studentRepository.getStudentByEmail(email);
     }
 
     @Override
     public Optional<Student> getStudentViaId(final Long id) {
         return studentRepository.findById(id);
+    }
+
+    @Override
+    public Optional<List<Student>> getStudentsViaCourse(String name) {
+        return studentRepository.getStudentsViaCourse(name);
     }
 
     @Override

@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class StudentExceptionController {
     @ExceptionHandler(value = InvalidDetailsException.class)
-    public ResponseEntity<Object> invalidDetailsException(InvalidDetailsException exception) {
+    public ResponseEntity<Object> invalidDetailsException(final InvalidDetailsException exception) {
+        exception.printStackTrace();
         return new ResponseEntity<>(StudentExceptionMessage.INVALID_STUDENT, HttpStatus.BAD_REQUEST);
     }
 }
