@@ -17,42 +17,37 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/add")
     ResponseEntity addStudent(@RequestBody Student student) throws InvalidDetailsException {
         studentService.addStudent(student);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/all")
     ResponseEntity<List<Student>> getAllStudents() {
         List<Student> al = studentService.getAllStudents();
         return new ResponseEntity<>(al, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/search/email")
     ResponseEntity<Student> getStudentViaEmail(final String email) {
         Optional<Student> student = studentService.getStudentViaEmail(email);
         return new ResponseEntity<>(student.get(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    /*@CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/search/{id}")
     ResponseEntity<Student> getStudentViaId(@PathVariable final Long id) {
         Optional<Student> student = studentService.getStudentViaId(id);
         return new ResponseEntity<>(student.get(), HttpStatus.OK);
-    }
+    }*/
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/search/{course}")
     ResponseEntity<List<Student>> getStudentsViaCourse(@PathVariable final String course) {
         Optional<List<Student>> student = studentService.getStudentsViaCourse(course);
         return new ResponseEntity<>(student.get(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping("/remove/{id}")
     ResponseEntity<Student> removeStudentViaId(@PathVariable final Long id) {
         studentService.removeStudent(id);

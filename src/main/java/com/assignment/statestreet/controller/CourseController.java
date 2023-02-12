@@ -18,28 +18,24 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/add")
     ResponseEntity addStudent(@RequestBody Course course) throws InvalidDetailsException {
         courseService.addCourse(course);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/all")
     ResponseEntity<List<Course>> getAllStudents() {
         Optional<List<Course>> courses = courseService.getAllCourses();
         return new ResponseEntity<>(courses.get(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/search/email")
     ResponseEntity<Course> getStudentViaId(final Long id) {
         Optional<Course> course = courseService.getCourseViaId(id);
         return new ResponseEntity<>(course.get(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping("/remove/{id}")
     ResponseEntity<Course> removeStudentViaId(@PathVariable final Long id) {
         courseService.removeCourse(id);

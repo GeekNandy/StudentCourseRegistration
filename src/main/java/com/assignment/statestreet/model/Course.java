@@ -12,7 +12,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "course")
+@Entity(name = "COURSE")
 public class Course {
 
     @Id
