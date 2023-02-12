@@ -34,14 +34,28 @@ public class StudentController {
     @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/search/email")
     ResponseEntity<Student> getStudentViaEmail(final String email) {
-        Student student = studentService.getStudentViaEmail(email);
-        return new ResponseEntity<>(student, HttpStatus.OK);
+        Optional<Student> student = studentService.getStudentViaEmail(email);
+        return new ResponseEntity<>(student.get(), HttpStatus.OK);
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @GetMapping("/search/email")
-    ResponseEntity<Student> getStudentViaId(final Long id) {
+    @GetMapping("/search/{id}")
+    ResponseEntity<Student> getStudentViaId(@PathVariable final Long id) {
         Optional<Student> student = studentService.getStudentViaId(id);
         return new ResponseEntity<>(student.get(), HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @GetMapping("/search/{course}")
+    ResponseEntity<List<Student>> getStudentsViaCourse(@PathVariable final String course) {
+        Optional<List<Student>> student = studentService.getStudentsViaCourse(course);
+        return new ResponseEntity<>(student.get(), HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @DeleteMapping("/remove/{id}")
+    ResponseEntity<Student> removeStudentViaId(@PathVariable final Long id) {
+        studentService.removeStudent(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

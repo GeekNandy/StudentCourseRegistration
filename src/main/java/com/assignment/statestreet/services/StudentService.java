@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface StudentService {
-    public void addStudent(final Student student) throws InvalidDetailsException;
-    public List<Student> getAllStudents();
-    public Student getStudentViaEmail(final String email);
+    void addStudent(final Student student) throws InvalidDetailsException;
+    List<Student> getAllStudents();
+    Optional<Student> getStudentViaEmail(final String email);
 
     Optional<Student> getStudentViaId(final Long id);
+
+    Optional<List<Student>> getStudentsViaCourse(final String name);
 
     void removeStudent(final Long id);
 }
