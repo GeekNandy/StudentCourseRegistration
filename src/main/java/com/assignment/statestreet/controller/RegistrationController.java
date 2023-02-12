@@ -19,4 +19,5 @@ public class RegistrationController {
         registrationService.addRegistration(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
 }

@@ -50,6 +50,7 @@ public class StudentController {
 
     @DeleteMapping("/remove/{id}")
     ResponseEntity<Student> removeStudentViaId(@PathVariable final Long id) {
+
         studentService.removeStudent(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

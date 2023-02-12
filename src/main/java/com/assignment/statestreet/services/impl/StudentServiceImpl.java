@@ -2,6 +2,7 @@ package com.assignment.statestreet.services.impl;
 
 import com.assignment.statestreet.exception.student.InvalidDetailsException;
 import com.assignment.statestreet.model.Student;
+import com.assignment.statestreet.repository.RegistrationRepository;
 import com.assignment.statestreet.repository.StudentRepository;
 import com.assignment.statestreet.services.StudentService;
 import com.assignment.statestreet.exception.student.Error;
@@ -17,6 +18,9 @@ import java.util.Optional;
 public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private RegistrationRepository registrationRepository;
     @Override
     public void addStudent(final Student student) throws InvalidDetailsException {
         if(student.getName().contains("[A-Za-z]")) studentRepository.save(student);
@@ -44,6 +48,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void removeStudent(final Long id) {
+        registrationRepository.deregisterStudent(id);
         studentRepository.deleteById(id);
     }
 
