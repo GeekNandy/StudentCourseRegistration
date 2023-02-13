@@ -33,7 +33,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         String studentEmail = request.getStudentEmail();
         Optional<Student> searchStudent = studentService.getStudentViaEmail(studentEmail);
         Student student;
-        if( searchStudent != null) {
+        if(searchStudent.isPresent()) {
             student = searchStudent.get();
         }
         else {

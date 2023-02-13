@@ -1,8 +1,6 @@
 package com.assignment.statestreet.repository;
 
 import com.assignment.statestreet.model.Student;
-import com.assignment.statestreet.model.Registration;
-import com.assignment.statestreet.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

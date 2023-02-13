@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
     private RegistrationRepository registrationRepository;
     @Override
     public void addStudent(final Student student) throws InvalidDetailsException {
-        if(student.getName().contains("[A-Za-z]")) studentRepository.save(student);
+        if(!student.getName().contains("[A-Za-z]")) studentRepository.save(student);
         else throw new InvalidDetailsException(Error.INVALID_NAME);
     }
 
@@ -47,9 +47,10 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void removeStudent(final Long id) {
+    public Integer removeStudent(final Long id) {
         registrationRepository.deregisterStudent(id);
         studentRepository.deleteById(id);
+        return 1;
     }
 
 }

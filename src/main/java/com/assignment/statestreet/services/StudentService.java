@@ -15,5 +15,5 @@ public interface StudentService {
 
     Optional<List<Student>> getStudentsViaCourse(final String name);
 
-    void removeStudent(final Long id);
+    Integer removeStudent(final Long id);
 }

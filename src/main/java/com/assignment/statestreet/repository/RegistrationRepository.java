@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface RegistrationRepository extends JpaRepository<Registration, Long> {
     @Modifying
     @Query(value="DELETE From REGISTRATION s where s.studentID = :studentID")
-    void deregisterStudent(@Param("studentID") final Long studentID);
+    Integer deregisterStudent(@Param("studentID") final Long studentID);
 }
