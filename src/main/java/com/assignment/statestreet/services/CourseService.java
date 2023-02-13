@@ -13,7 +13,7 @@ public interface CourseService {
 
     Optional<Course> getCourseViaId(final Long id);
 
-    Optional<Course> getCourseViaName(final String id);
+    Optional<Course> getCourseViaName(final String name);
 
     void removeCourse(final Long id);
 
